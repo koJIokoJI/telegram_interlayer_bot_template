@@ -1,0 +1,5 @@
+[development]
+
+    [development.logs]
+        LEVEL = "DEBUG"
+        FORMAT = "[%(asctime)s] #%(levelname)-8s %(filename)s:%(lineno)d - %(name)s - %(message)s"
