@@ -75,6 +75,7 @@ async def confirm_deletion_button_handler(
     usernames_list = dialog_manager.dialog_data.get("usernames_list")
     usernames_to_delete = [usernames_list[int(i) - 1] for i in checked]
     usernames_list = list(set(usernames_list) - set(usernames_to_delete))
+    dialog_manager.current_context().widget_data["usernames_list"] = []
     logger.debug(usernames_list)
 
     await redis.delete("usernames")
@@ -141,6 +142,7 @@ admin_dialog = Dialog(
             id="confir_deletion",
             on_click=confirm_deletion_button_handler,
         ),
+        SwitchTo(text=Const(text="Отмена"), state=InterlayerAdminSG.menu),
         getter=usernames_getter,
         state=InterlayerAdminSG.delete_channel_usernames,
     ),
