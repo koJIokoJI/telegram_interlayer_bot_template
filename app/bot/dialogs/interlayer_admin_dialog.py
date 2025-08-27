@@ -142,7 +142,9 @@ admin_dialog = Dialog(
             id="confir_deletion",
             on_click=confirm_deletion_button_handler,
         ),
-        SwitchTo(text=Const(text="Отмена"), state=InterlayerAdminSG.menu),
+        SwitchTo(
+            text=Const(text="Отмена"), id="discard_button", state=InterlayerAdminSG.menu
+        ),
         getter=usernames_getter,
         state=InterlayerAdminSG.delete_channel_usernames,
     ),
